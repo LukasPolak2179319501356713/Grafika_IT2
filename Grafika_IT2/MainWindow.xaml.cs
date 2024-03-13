@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,19 +43,23 @@ namespace Grafika_IT2
       board.Draw(canvasBoard);
     }
 
-    private void ButtonSave_Click(object sender, RoutedEventArgs e)
-    {
-      try
-      {
-        File.WriteAllText("data.csv", board.ToString());
-        MessageBox.Show("Soubor byl uložen");
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show("Soubor nebyl uložen z důvodu chyby:\r\n" + ex.Message);
-      }     
-    }
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "";
+                save.FilterIndex = 0;
+                save.RestoreDirectory = true;
 
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Soubor nebyl uložen z důvodu chyby: \r\n" + ex.Message);
+            }
+        }
     private void ButtonClear_Click(object sender, RoutedEventArgs e)
     {
       board.Clear();
