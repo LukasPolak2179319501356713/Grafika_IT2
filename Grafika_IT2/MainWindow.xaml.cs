@@ -52,7 +52,12 @@ namespace Grafika_IT2
                 save.FilterIndex = 0;
                 save.RestoreDirectory = true;
 
-
+                if (save.ShowDialog() == true)
+                {
+                    string path=save.FileName;
+                    File.WriteAllText(path,board.ToString());
+                    MessageBox.Show("Soubor uložen");
+                }
 
             }
             catch (Exception ex)
